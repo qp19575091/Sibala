@@ -5,6 +5,7 @@ namespace App\Game\Sibala;
 use App\Game\Sibala\Matcher\NormalPointMatcher;
 use App\Game\Sibala\Matcher\StrongStraightMatcher;
 use App\Game\Sibala\Matcher\OtherThreeOfAKindMatcher;
+use App\Game\Sibala\Matcher\ThreeOfAKindOfOneMatcher;
 use App\Game\Sibala\Matcher\WeakStraightMatcher;
 
 class Player
@@ -22,10 +23,11 @@ class Player
 
     public function getCategory()
     {
-        $match = new OtherThreeOfAKindMatcher(
-            new StrongStraightMatcher(
-                new NormalPointMatcher(
-                    new WeakStraightMatcher(null))));
+        $match = new ThreeOfAKindOfOneMatcher(
+            new OtherThreeOfAKindMatcher(
+                new StrongStraightMatcher(
+                    new NormalPointMatcher(
+                        new WeakStraightMatcher(null)))));
 
 
         return $match->decidedCategory($this);
@@ -54,5 +56,10 @@ class Player
     public function isStrongStraight(): bool
     {
         return array_keys($this->groupByDices) === [4, 5, 6];
+    }
+
+    public function isThreeOfAKindOfOne(): int
+    {
+        return count($this->groupByDices) === 1 & array_key_first($this->groupByDices) === 1;
     }
 }
