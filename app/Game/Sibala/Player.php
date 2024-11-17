@@ -35,4 +35,9 @@ class Player
     {
         return array_key_last($this->groupByDices);
     }
+
+    public function isNormalPoint()
+    {
+        return count($this->groupByDices) === 2;
+    }
 }
