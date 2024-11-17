@@ -31,11 +31,28 @@ class SibalaTest extends TestCase
         );
     }
 
+
     public function test_three_of_a_kind_win_normal_point(): void
     {
         // player1 win
         $this->assertEquals("Player1 win 300 with 3",
             $this->game([3, 3, 3], [1, 3, 1], 100)
+        );
+    }
+
+    public function test_three_of_a_kind_win_strong_straight(): void
+    {
+        // player1 win
+        $this->assertEquals("Player1 win 300 with 3",
+            $this->game([3, 3, 3], [5, 4, 6], 100)
+        );
+    }
+
+    public function test_strong_straight_win_normal_point(): void
+    {
+        // player1 win
+        $this->assertEquals("Player1 win 200 with 6",
+            $this->game([5, 6, 4], [4, 4, 6], 100)
         );
     }
 
