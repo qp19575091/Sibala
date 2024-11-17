@@ -8,12 +8,12 @@ use App\Game\Sibala\Player;
 
 class WeakStraightMatcher extends CategoryMatcher
 {
-    public function isMatch(array $groupByDices): bool
+    public function isMatch(Player $player): bool
     {
-        return array_keys($groupByDices) === [1, 2, 3];
+        return $player->isWeakStraight();
     }
 
-    public function getMatchCategory(array $groupByDices): Category
+    public function getMatchCategory(Player $player): Category
     {
         return new WeakStraight();
     }

@@ -25,7 +25,7 @@ class Player
             new NormalPointMatcher(
                 new WeakStraightMatcher(null)));
 
-        return $match->decidedCategory($this->groupByDices);
+        return $match->decidedCategory($this);
     }
 
     public function getSingePoint(): int
@@ -36,5 +36,15 @@ class Player
     public function isNormalPoint(): bool
     {
         return count($this->groupByDices) === 2;
+    }
+
+    public function isThreeOfAKind(): bool
+    {
+        return count($this->groupByDices) === 1;
+    }
+
+    public function isWeakStraight(): bool
+    {
+        return array_keys($this->groupByDices) === [1, 2, 3];
     }
 }

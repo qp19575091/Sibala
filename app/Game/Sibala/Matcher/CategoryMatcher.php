@@ -13,17 +13,17 @@ abstract class CategoryMatcher
     ) {
     }
 
-    public function decidedCategory(array $groupByDices)
+    public function decidedCategory(Player $player)
     {
-        if ($this->isMatch($groupByDices)) {
-            return $this->getMatchCategory($groupByDices);
+        if ($this->isMatch($player)) {
+            return $this->getMatchCategory($player);
         }
         return $this->nextMatcher !== null
-            ? $this->nextMatcher->decidedCategory($groupByDices)
+            ? $this->nextMatcher->decidedCategory($player)
             : new NoPoint();
     }
 
-    abstract public function isMatch(array $groupByDices): bool;
+    abstract public function isMatch(Player $player): bool;
 
-    abstract public function getMatchCategory(array $groupByDices): Category;
+    abstract public function getMatchCategory(Player $player): Category;
 }

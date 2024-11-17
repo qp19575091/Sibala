@@ -8,12 +8,12 @@ use App\Game\Sibala\Player;
 
 class NormalPointMatcher extends CategoryMatcher
 {
-    public function isMatch(array $groupByDices): bool
+    public function isMatch(Player $player): bool
     {
-        return count($groupByDices) === 2;
+        return $player->isNormalPoint();
     }
 
-    public function getMatchCategory(array $groupByDices): Category
+    public function getMatchCategory(Player $player): Category
     {
         return new NormalPoint();
     }
