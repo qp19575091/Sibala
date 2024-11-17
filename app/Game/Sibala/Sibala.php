@@ -2,9 +2,9 @@
 
 namespace App\Game\Sibala;
 
-//use App\Attributes\MaxLength;
+use App\Attributes\MaxLength;
 use App\Attributes\MaxValue;
-//use App\Attributes\MinLength;
+use App\Attributes\MinLength;
 use App\Attributes\MinValue;
 
 class Sibala
@@ -12,9 +12,13 @@ class Sibala
     public function __construct(
         #[MinValue(1)]
         #[MaxValue(6)]
+        #[MinLength(3)]
+        #[MaxLength(3)]
         private $dice1,
         #[MaxValue(6)]
         #[MinValue(1)]
+        #[MinLength(3)]
+        #[MaxLength(3)]
         private $dice2,
         private $money
     ) {
