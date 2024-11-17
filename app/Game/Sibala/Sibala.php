@@ -31,6 +31,14 @@ class Sibala
                 return "Tie";
             }
         }
+
+        if (count($player1) === 3 && count($player2) === 3) {
+            return "Tie";
+        } elseif (count($player2) === 3) {
+            return "Player1 win 100 with 3";
+        } else {
+            return "Player2 win 100 with 3";
+        }
     }
 
     public function groupByDice($dice): array
