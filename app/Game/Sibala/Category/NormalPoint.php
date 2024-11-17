@@ -2,10 +2,10 @@
 
 namespace App\Game\Sibala\Category;
 
-class NormalPoint
+class NormalPoint extends Category
 {
-    public int $type = 1;
-    public function __construct()
+    public function type(): int
     {
+        return 1;
     }
 }
