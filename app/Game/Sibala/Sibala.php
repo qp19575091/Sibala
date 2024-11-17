@@ -14,17 +14,17 @@ class Sibala
 
     public function result()
     {
-        $player1 = $this->groupByDice($this->dice1);
-        $player2 = $this->groupByDice($this->dice2);
+        $player1 = new Player($this->dice1, "Player1");
+        $player2 = new Player($this->dice2, "Player2");
 
-        $player1Category = $this->getCategory($player1);
-        $player2Category = $this->getCategory($player2);
+        $player1Category = $player1->getCategory();
+        $player2Category = $player2->getCategory();
 
         // normal point
         if ($player1Category->type === 1 && $player2Category->type === 1) {
-            if (array_key_last($player1) > array_key_last($player2)) {
+            if ($player1->getSingePoint() > $player2->getSingePoint()) {
                 return "Player1 win 100 with 3";
-            } elseif (array_key_last($player1) < array_key_last($player2)) {
+            } elseif ($player1->getSingePoint() < $player2->getSingePoint()) {
                 return "Player2 win 100 with 3";
             } else {
                 return "Tie";
@@ -52,16 +52,5 @@ class Sibala
         arsort($groupByDices);
 
         return $groupByDices;
-    }
-
-    private function getCategory(array $player)
-    {
-        if (count($player) === 1) {
-            return new ThreeOfAKind();
-        } elseif (count($player) === 2) {
-            return new NormalPoint();
-        } else {
-            return new NoPoint();
-        }
     }
 }
