@@ -2,9 +2,7 @@
 
 namespace App\Game\Sibala;
 
-use App\Game\Sibala\Category\NoPoint;
-use App\Game\Sibala\Category\NormalPoint;
-use App\Game\Sibala\Category\ThreeOfAKind;
+use function Symfony\Component\Translation\t;
 
 class Sibala
 {
@@ -20,37 +18,37 @@ class Sibala
         $player1Category = $player1->getCategory();
         $player2Category = $player2->getCategory();
 
-        // normal point
-        if ($player1Category->type === 1 && $player2Category->type === 1) {
-            if ($player1->getSingePoint() > $player2->getSingePoint()) {
-                return "Player1 win 100 with 3";
-            } elseif ($player1->getSingePoint() < $player2->getSingePoint()) {
-                return "Player2 win 100 with 3";
-            } else {
-                return "Tie";
-            }
-        }
-        // no point and normal point
-        if ($player1Category->type === 0 && $player2Category->type === 0) {
-            return "Tie";
-        } elseif ($player2Category->type === 0) {
-            return "Player1 win 100 with 3";
-        } elseif ($player1Category->type === 0) {
-            return "Player2 win 100 with 3";
+        return $this->compareResult($player1, $player2);
+    }
+
+    private function compareResult(Player $player1, Player $player2)
+    {
+        $player1Category = $player1->getCategory();
+        $player2Category = $player2->getCategory();
+
+        if ($player1Category->type === $player2Category->type && $player1Category->type === 1) {
+            return $this->compareNormalPoint($player1, $player2);
         }
 
-        // Three of a kind
         if ($player1Category->type === $player2Category->type) {
             return "Tie";
         }
+
+        if ($player1Category->type > $player2Category->type) {
+            return $player1->name . " win 100 with " . $player1->getSingePoint();
+        } elseif ($player1Category->type < $player2Category->type) {
+            return $player2->name . " win 100 with " . $player2->getSingePoint();
+        }
     }
 
-    public function groupByDice($dice): array
+    private function compareNormalPoint(Player $player1, Player $player2)
     {
-        sort($dice);
-        $groupByDices = array_count_values($dice);
-        arsort($groupByDices);
-
-        return $groupByDices;
+        if ($player1->getSingePoint() > $player2->getSingePoint()) {
+            return $player1->name . " win 100 with " . $player1->getSingePoint();
+        } elseif ($player1->getSingePoint() < $player2->getSingePoint()) {
+            return $player2->name . " win 100 with " . $player2->getSingePoint();
+        } else {
+            return "Tie";
+        }
     }
 }
