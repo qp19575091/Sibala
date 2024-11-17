@@ -2,10 +2,12 @@
 
 namespace App\Game\Sibala\Category;
 
-class NoPoint extends Category
+class WeakStraight extends Category
 {
+    public int $payoutRate = 2;
+
     public function type(): int
     {
-        return -1;
+        return 0;
     }
 }

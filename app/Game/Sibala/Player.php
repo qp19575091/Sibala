@@ -5,6 +5,7 @@ namespace App\Game\Sibala;
 use App\Game\Sibala\Category\NoPoint;
 use App\Game\Sibala\Category\NormalPoint;
 use App\Game\Sibala\Category\ThreeOfAKind;
+use App\Game\Sibala\Category\WeakStraight;
 
 class Player
 {
@@ -26,6 +27,8 @@ class Player
             return new ThreeOfAKind();
         } elseif (count($this->groupByDices) === 2) {
             return new NormalPoint();
+        } elseif (array_keys($this->groupByDices) === [1, 2, 3]) {
+            return new WeakStraight();
         } else {
             return new NoPoint();
         }
