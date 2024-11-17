@@ -56,6 +56,15 @@ class SibalaTest extends TestCase
         );
     }
 
+    public function test_three_of_a_kind_of_one_win_other_three_of_a_kind(): void
+    {
+        // player1 win
+        $this->assertEquals("Player1 win 500 with 1",
+            $this->game([1, 1, 1], [4, 4, 4], 100)
+        );
+    }
+
+
     public function test_normal_point_win_weak_straight(): void
     {
         // player1 win
