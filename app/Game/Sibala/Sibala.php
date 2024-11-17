@@ -20,6 +20,7 @@ class Sibala
         #[MinLength(3)]
         #[MaxLength(3)]
         private $dice2,
+        #[MinValue(0)]
         private $money
     ) {
     }
