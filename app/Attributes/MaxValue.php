@@ -5,22 +5,27 @@ namespace App\Attributes;
 use Attribute;
 
 #[Attribute]
-class MaxValue
+class MaxValue extends ValidationRule
 {
     public function __construct(
-        public readonly float $limit
+        public readonly float $limit,
+        public readonly bool $strict = false
     ) {
     }
 
-    public function validate($value): bool
+    protected function pass($value): bool
     {
         if (!is_array($value)) {
             $value = [$value];
         }
-        if (max($value) <= $this->limit) {
-            return true;
-        } else {
-            throw new \Exception();
-        }
+        return $this->strict
+            ? max($value) < $this->limit
+            : max($value) <= $this->limit;
+    }
+
+    protected function message(): string
+    {
+        return "Your value length can not greater than $this->limit";
     }
 }
+
