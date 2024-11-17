@@ -2,14 +2,12 @@
 
 namespace App\Game\Sibala;
 
-use App\Game\Sibala\Category\NoPoint;
-use App\Game\Sibala\Category\NormalPoint;
-use App\Game\Sibala\Category\ThreeOfAKind;
-use App\Game\Sibala\Category\WeakStraight;
+use App\Game\Sibala\Matcher\NormalPointMatcher;
+use App\Game\Sibala\Matcher\ThreeOfAKindMatcher;
+use App\Game\Sibala\Matcher\WeakStraightMatcher;
 
 class Player
 {
-
     private array $groupByDices;
 
     public function __construct(public $dice, public $name)
@@ -23,15 +21,11 @@ class Player
 
     public function getCategory()
     {
-        if (count($this->groupByDices) === 1) {
-            return new ThreeOfAKind();
-        } elseif (count($this->groupByDices) === 2) {
-            return new NormalPoint();
-        } elseif (array_keys($this->groupByDices) === [1, 2, 3]) {
-            return new WeakStraight();
-        } else {
-            return new NoPoint();
-        }
+        $match = new ThreeOfAKindMatcher(
+            new NormalPointMatcher(
+                new WeakStraightMatcher(null)));
+
+        return $match->decidedCategory($this);
     }
 
     public function getSingePoint(): int
@@ -39,8 +33,18 @@ class Player
         return array_key_last($this->groupByDices);
     }
 
-    public function isNormalPoint()
+    public function isNormalPoint(): bool
     {
         return count($this->groupByDices) === 2;
+    }
+
+    public function isThreeOfAKind(): bool
+    {
+        return count($this->groupByDices) === 1;
+    }
+
+    public function isWeakStraight(): bool
+    {
+        return array_keys($this->groupByDices) === [1, 2, 3];
     }
 }
