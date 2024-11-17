@@ -11,9 +11,9 @@ class Sibala
 {
     public function __construct(
         #[MinValue(1)]
-        #[MaxValue(7)]
+        #[MaxValue(6)]
         private $dice1,
-        #[MaxValue(7)]
+        #[MaxValue(6)]
         #[MinValue(1)]
         private $dice2,
         private $money
