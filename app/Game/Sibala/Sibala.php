@@ -21,8 +21,10 @@ class Sibala
         if (count($player1) === 2 && count($player2) === 2) {
             if (array_key_last($player1) > array_key_last($player2)) {
                 return "Player1 win 100 with 3";
-            } else {
+            } elseif (array_key_last($player1) < array_key_last($player2)) {
                 return "Player2 win 100 with 3";
+            } else {
+                return "Tie";
             }
         }
     }
