@@ -40,11 +40,9 @@ class SiBala
         }
 
         // other category
-        if ($category1->type === 0 && $category2->type === 0) {
-            return "Tie";
-        } elseif ($category2->type === 0) {
+        if ($category1->type > $category2->type) {
             return "Player1 win 100 with 3";
-        } elseif ($category1->type === 0) {
+        } else {
             return "Player2 win 100 with 3";
         }
     }
