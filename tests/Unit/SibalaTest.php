@@ -18,6 +18,14 @@ class SibalaTest extends TestCase
         );
     }
 
+    public function test_tie(): void
+    {
+        // same normal point
+        $this->assertEquals("Tie",
+            $this->game([1, 2, 1], [3, 2, 3], 100)
+        );
+    }
+
     public function game($player1, $player2, $money): string
     {
         $game = new SiBala($player1, $player2, $money);

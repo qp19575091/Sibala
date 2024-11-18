@@ -19,8 +19,10 @@ class SiBala
         if (count($handDice1) === 2 && count($handDice2) === 2) {
             if (array_key_last($handDice1) > array_key_last($handDice2)) {
                 return "Player1 win 100 with 3";
-            } else {
+            } elseif (array_key_last($handDice1) < array_key_last($handDice2)) {
                 return "Player2 win 100 with 3";
+            } else {
+                return "Tie";
             }
         }
     }
