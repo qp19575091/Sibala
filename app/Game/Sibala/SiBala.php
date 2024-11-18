@@ -41,7 +41,7 @@ class SiBala
         $category1 = $handDice1->getCategory();
         $category2 = $handDice2->getCategory();
 
-        if ($category1->type === $category2->type && $category1->type === 1) {
+        if ($category1->type === $category2->type && $handDice1->isNormalPoint()) {
             return $this->compareNormalPoint($handDice1, $handDice2);
         }
 

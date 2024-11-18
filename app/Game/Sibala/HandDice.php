@@ -39,4 +39,10 @@ class HandDice
     {
         return array_key_last($this->groupByDice);
     }
+
+
+    public function isNormalPoint()
+    {
+        return count($this->groupByDice) === 2;
+    }
 }
