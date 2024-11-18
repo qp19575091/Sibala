@@ -10,15 +10,9 @@ use App\Game\Attributes\MaxLength;
 class SiBala
 {
     public function __construct(
-        #[MinValue(1)]
-        #[MaxValue(6)]
-        #[MinLength(3)]
-        #[MaxLength(3)]
+        #[MinValue(1)] #[MaxValue(6)] #[MinLength(3)] #[MaxLength(3)]
         private readonly array $dice1,
-        #[MinValue(1)]
-        #[MaxValue(6)]
-        #[MinLength(3)]
-        #[MaxLength(3)]
+        #[MinValue(1)] #[MaxValue(6)] #[MinLength(3)] #[MaxLength(3)]
         private readonly array $dice2,
         private readonly int $bet
     ) {
