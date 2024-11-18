@@ -31,6 +31,14 @@ class SibalaTest extends TestCase
         );
     }
 
+    public function test_three_of_a_kind_win_normal_point(): void
+    {
+        // player1 win
+        $this->assertEquals("Player1 win 300 with 3",
+            $this->game([3, 3, 3], [1, 3, 1], 100)
+        );
+    }
+
     public function test_tie(): void
     {
         // same normal point
