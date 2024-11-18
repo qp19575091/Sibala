@@ -2,10 +2,6 @@
 
 namespace App\Game\Sibala;
 
-use App\Game\Sibala\Category\NoPoint;
-use App\Game\Sibala\Category\NormalPoint;
-use App\Game\Sibala\Category\ThreeOfAKind;
-
 class SiBala
 {
     public function __construct(
@@ -15,7 +11,7 @@ class SiBala
     ) {
     }
 
-    public function result()
+    public function result(): string
     {
         $player1 = new Player($this->dice1, "Player1");
         $player2 = new Player($this->dice2, "Player2");

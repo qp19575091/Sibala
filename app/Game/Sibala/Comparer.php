@@ -38,5 +38,4 @@ class Comparer
             ? 1
             : -1;
     }
-
 }

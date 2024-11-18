@@ -41,7 +41,7 @@ class HandDice
     }
 
 
-    public function isNormalPoint()
+    public function isNormalPoint(): bool
     {
         return count($this->groupByDice) === 2;
     }
