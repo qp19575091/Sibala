@@ -2,10 +2,9 @@
 
 namespace App\Game\Sibala;
 
-use App\Game\Sibala\Category\NoPoint;
-use App\Game\Sibala\Category\NormalPoint;
-use App\Game\Sibala\Category\ThreeOfAKind;
-use App\Game\Sibala\Category\WeakStraight;
+use App\Game\Sibala\Matcher\NormalPointMatcher;
+use App\Game\Sibala\Matcher\ThreeOfAKindMatcher;
+use App\Game\Sibala\Matcher\WeakStraightMatcher;
 
 class HandDice
 {
@@ -18,15 +17,11 @@ class HandDice
 
     public function getCategory()
     {
-        if (count($this->groupByDice) === 1) {
-            return new ThreeOfAKind();
-        } elseif (count($this->groupByDice) === 2) {
-            return new NormalPoint();
-        } elseif (array_keys($this->groupByDice) === [1, 2, 3]) {
-            return new WeakStraight();
-        } else {
-            return new NoPoint();
-        }
+        $matcher = new ThreeOfAKindMatcher(
+            new NormalPointMatcher(
+                new WeakStraightMatcher(null)));
+
+        return $matcher->decidedCategory($this->groupByDice);
     }
 
     public function groupByDice($dice): array
