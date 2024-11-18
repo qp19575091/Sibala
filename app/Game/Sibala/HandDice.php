@@ -4,7 +4,7 @@ namespace App\Game\Sibala;
 
 use App\Game\Sibala\Matcher\NormalPointMatcher;
 use App\Game\Sibala\Matcher\StrongStraightMatcher;
-use App\Game\Sibala\Matcher\ThreeOfAKindMatcher;
+use App\Game\Sibala\Matcher\OtherThreeOfAKindMatcher;
 use App\Game\Sibala\Matcher\WeakStraightMatcher;
 
 class HandDice
@@ -18,7 +18,7 @@ class HandDice
 
     public function getCategory()
     {
-        $matcher = new ThreeOfAKindMatcher(
+        $matcher = new OtherThreeOfAKindMatcher(
             new StrongStraightMatcher(
                 new NormalPointMatcher(
                     new WeakStraightMatcher(null))));
