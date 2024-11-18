@@ -13,13 +13,18 @@ class HandDice
 {
     private array $groupByDices;
 
-    public function __construct(array $dice)
+    public function __construct(private array $dice)
     {
-        sort($dice);
-        $groupByDices = array_count_values($dice);
+        $this->groupByDices = $this->getGroupByDice();
+    }
+
+    private function getGroupByDice(): array
+    {
+        sort($this->dice);
+        $groupByDices = array_count_values($this->dice);
         arsort($groupByDices);
 
-        $this->groupByDices = $groupByDices;
+        return $groupByDices;
     }
 
     public function getCategory(): Category
