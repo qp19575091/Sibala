@@ -24,7 +24,7 @@ abstract class CategoryMatcher
             : new NoPoint();
     }
 
-    abstract public function isMatch(HandDice $player): bool;
+    abstract public function isMatch(HandDice $handDice): bool;
 
     abstract public function getMatchCategory(): Category;
 }
