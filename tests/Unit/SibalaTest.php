@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\Game\Sibala\SiBala;
 use PHPUnit\Framework\TestCase;
 
 class SibalaTest extends TestCase
