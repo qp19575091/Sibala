@@ -82,6 +82,14 @@ class SibalaTest extends TestCase
         $this->assertEquals("Tie",
             $this->game([3, 3, 3], [4, 4, 4], 100)
         );
+
+        $this->assertEquals("Tie",
+            $this->game([1, 1, 1], [1, 1, 1], 100)
+        );
+
+        $this->assertEquals("Tie",
+            $this->game([1, 3, 5], [2, 4, 6], 100)
+        );
     }
 
     public function game($player1, $player2, $money): string
