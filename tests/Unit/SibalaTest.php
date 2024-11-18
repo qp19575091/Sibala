@@ -18,6 +18,14 @@ class SibalaTest extends TestCase
         );
     }
 
+    public function test_normal_point_win_weak_straight(): void
+    {
+        // player1 win
+        $this->assertEquals("Player1 win 200 with 2",
+            $this->game([3, 2, 3], [1, 3, 2], 100)
+        );
+    }
+
     public function test_normal_point_win_no_point(): void
     {
         // player1 no point

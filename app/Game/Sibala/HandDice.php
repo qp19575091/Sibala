@@ -5,6 +5,7 @@ namespace App\Game\Sibala;
 use App\Game\Sibala\Category\NoPoint;
 use App\Game\Sibala\Category\NormalPoint;
 use App\Game\Sibala\Category\ThreeOfAKind;
+use App\Game\Sibala\Category\WeakStraight;
 
 class HandDice
 {
@@ -21,6 +22,8 @@ class HandDice
             return new ThreeOfAKind();
         } elseif (count($this->groupByDice) === 2) {
             return new NormalPoint();
+        } elseif (array_keys($this->groupByDice) === [1, 2, 3]) {
+            return new WeakStraight();
         } else {
             return new NoPoint();
         }
