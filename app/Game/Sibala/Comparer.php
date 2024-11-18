@@ -5,17 +5,17 @@ namespace App\Game\Sibala;
 class Comparer
 {
     public function __construct(
-        private readonly Player $player1,
-        private readonly Player $player2
+        private readonly HandDice $handDice1,
+        private readonly HandDice $handDice2
     ) {
     }
 
     public function getResult(): int
     {
-        $player1Category = $this->player1->getCategory();
-        $player2Category = $this->player2->getCategory();
+        $player1Category = $this->handDice1->getCategory();
+        $player2Category = $this->handDice2->getCategory();
 
-        if ($player1Category->type === $player2Category->type && $this->player1->isNormalPoint()) {
+        if ($player1Category->type === $player2Category->type && $this->handDice1->isNormalPoint()) {
             return $this->compareSinglePoint();
         }
 
@@ -30,11 +30,11 @@ class Comparer
 
     private function compareSinglePoint(): int
     {
-        if ($this->player1->getSingePoint() === $this->player2->getSingePoint()) {
+        if ($this->handDice1->getSingePoint() === $this->handDice2->getSingePoint()) {
             return 0;
         }
 
-        return $this->player1->getSingePoint() > $this->player2->getSingePoint()
+        return $this->handDice1->getSingePoint() > $this->handDice2->getSingePoint()
             ? 1
             : -1;
     }
