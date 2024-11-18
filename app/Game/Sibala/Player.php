@@ -6,7 +6,7 @@ class Player
 {
     public function __construct(
         private readonly array $dice,
-        private readonly string $name
+        public readonly string $name
     ) {
     }
 
