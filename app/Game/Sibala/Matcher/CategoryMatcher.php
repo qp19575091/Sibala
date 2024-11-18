@@ -5,6 +5,7 @@ namespace App\Game\Sibala\Matcher;
 
 use App\Game\Sibala\Category\Category;
 use App\Game\Sibala\Category\NoPoint;
+use App\Game\Sibala\HandDice;
 
 abstract class CategoryMatcher
 {
@@ -13,17 +14,17 @@ abstract class CategoryMatcher
     ) {
     }
 
-    public function decidedCategory(array $groupByDices)
+    public function decidedCategory(HandDice $handDice)
     {
-        if ($this->isMatch($groupByDices)) {
-            return $this->getMatchCategory($groupByDices);
+        if ($this->isMatch($handDice)) {
+            return $this->getMatchCategory();
         }
         return $this->nextMatcher !== null
-            ? $this->nextMatcher->decidedCategory($groupByDices)
+            ? $this->nextMatcher->decidedCategory($handDice)
             : new NoPoint();
     }
 
-    abstract public function isMatch(array $groupByDices): bool;
+    abstract public function isMatch(HandDice $player): bool;
 
     abstract public function getMatchCategory(): Category;
 }

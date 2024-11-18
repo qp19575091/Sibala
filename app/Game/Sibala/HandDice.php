@@ -21,7 +21,7 @@ class HandDice
             new NormalPointMatcher(
                 new WeakStraightMatcher(null)));
 
-        return $matcher->decidedCategory($this->groupByDice);
+        return $matcher->decidedCategory($this);
     }
 
     public function groupByDice($dice): array
@@ -38,9 +38,18 @@ class HandDice
         return array_key_last($this->groupByDice);
     }
 
-
     public function isNormalPoint(): bool
     {
         return count($this->groupByDice) === 2;
+    }
+
+    public function isThreeOfAKind(): bool
+    {
+        return count($this->groupByDice) === 1;
+    }
+
+    public function isWeakStraight(): bool
+    {
+        return array_keys($this->groupByDice) === [1, 2, 3];
     }
 }

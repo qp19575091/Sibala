@@ -4,12 +4,13 @@ namespace App\Game\Sibala\Matcher;
 
 use App\Game\Sibala\Category\Category;
 use App\Game\Sibala\Category\NormalPoint;
+use App\Game\Sibala\HandDice;
 
 class NormalPointMatcher extends CategoryMatcher
 {
-    public function isMatch(array $groupByDices): bool
+    public function isMatch(HandDice $handDice): bool
     {
-        return count($groupByDices) === 2;
+        return $handDice->isNormalPoint();
     }
 
     public function getMatchCategory(): Category
