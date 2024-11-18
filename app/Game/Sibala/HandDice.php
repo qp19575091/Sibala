@@ -2,6 +2,7 @@
 
 namespace App\Game\Sibala;
 
+use App\Game\Sibala\Category\Category;
 use App\Game\Sibala\Matcher\NormalPointMatcher;
 use App\Game\Sibala\Matcher\OtherThreeOfAKindMatcher;
 use App\Game\Sibala\Matcher\StrongStraightMatcher;
@@ -21,7 +22,7 @@ class HandDice
         $this->groupByDices = $groupByDices;
     }
 
-    public function getCategory()
+    public function getCategory(): Category
     {
         $match = new ThreeOfAKindOfOneMatcher(
             new OtherThreeOfAKindMatcher(

@@ -4,9 +4,10 @@ namespace App\Game\Sibala;
 
 class Player
 {
-    public function __construct(public $dice, public $name)
-    {
-
+    public function __construct(
+        public array $dice,
+        public string $name
+    ) {
     }
 
     public function getHandDice(): HandDice

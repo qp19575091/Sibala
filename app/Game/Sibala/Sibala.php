@@ -10,15 +10,9 @@ use App\Attributes\MinValue;
 class Sibala
 {
     public function __construct(
-        #[MinValue(1)]
-        #[MaxValue(6)]
-        #[MinLength(3)]
-        #[MaxLength(3)]
+        #[MinValue(1)] #[MaxValue(6)] #[MinLength(3)] #[MaxLength(3)]
         private $dice1,
-        #[MaxValue(6)]
-        #[MinValue(1)]
-        #[MinLength(3)]
-        #[MaxLength(3)]
+        #[MaxValue(6)] #[MinValue(1)] #[MinLength(3)] #[MaxLength(3)]
         private $dice2,
         #[MinValue(0)]
         private $money
@@ -35,8 +29,6 @@ class Sibala
 
         $category1 = $handDice1->getCategory();
         $category2 = $handDice2->getCategory();
-
-
 
         $comparer = new Comparer($handDice1, $handDice2);
         $compareResult = $comparer->getResult();

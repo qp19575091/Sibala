@@ -5,7 +5,6 @@ namespace App\Game\Sibala\Matcher;
 use App\Game\Sibala\Category\Category;
 use App\Game\Sibala\Category\NoPoint;
 use App\Game\Sibala\HandDice;
-use App\Game\Sibala\Player;
 
 abstract class CategoryMatcher
 {
@@ -25,6 +24,5 @@ abstract class CategoryMatcher
     }
 
     abstract public function isMatch(HandDice $player): bool;
-
     abstract public function getMatchCategory(HandDice $player): Category;
 }
