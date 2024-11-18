@@ -6,22 +6,26 @@ namespace App\Game\Attributes;
 use Attribute;
 
 #[Attribute]
-class MinValue
+class MinValue extends ValidationRule
 {
     public function __construct(
-        public readonly float $limit
+        public readonly float $limit,
+        public readonly bool $strict = false
     ) {
     }
 
-    public function validate($value)
+    protected function pass($value): bool
     {
         if (!is_array($value)) {
             $value = [$value];
         }
-        if (min($value) >= $this->limit) {
-            return true;
-        } else {
-            throw new \Exception();
-        }
+        return $this->strict
+            ? min($value) > $this->limit
+            : min($value) >= $this->limit;
+    }
+
+    protected function message(): string
+    {
+        return "Your value length can not less than $this->limit";
     }
 }
