@@ -93,17 +93,28 @@ class SibalaTest extends TestCase
         );
     }
 
-    public function test_invalid_input_should_throw_exception()
+    /**
+     * @dataProvider invalidInputProvider
+     */
+    public function test_invalid_input_should_throw_exception($player1Dice, $player2Dice, $bet)
     {
         $this->expectException(\Exception::class);
-        $this->game([1, 2, 0], [1, 2, 3], 100);
-        $this->game([1, 2, 7], [1, 2, 3], 100);
+        $this->game($player1Dice, $player2Dice, $bet);
     }
 
-    public function game($player1, $player2, $money): string
+    public static function invalidInputProvider(): array
+    {
+        return [
+            [[1, 2, 0], [1, 2, 3], 100],
+            [[1, 2, 7], [1, 2, 3], 100]
+        ];
+    }
+
+
+    public function game($player1, $player2, $bet): string
     {
         $game = new Game();
-        $game = $game->sibala($player1, $player2, $money);
-        return $game->result();	        return $game->result();
+        $game = $game->sibala($player1, $player2, $bet);
+        return $game->result();
     }
 }
