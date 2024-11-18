@@ -25,6 +25,10 @@ class SiBala
                 return "Tie";
             }
         }
+
+        if (count($handDice1) === 1 && count($handDice2) === 1) {
+            return "Tie";
+        }
     }
 
     public function groupByDice($dice): array
