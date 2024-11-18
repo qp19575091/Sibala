@@ -2,9 +2,12 @@
 
 namespace App\Game\Sibala;
 
+use App\Game\Attributes\MinValue;
+
 class SiBala
 {
     public function __construct(
+        #[MinValue(1)]
         private readonly array $dice1,
         private readonly array $dice2,
         private readonly int $bet
