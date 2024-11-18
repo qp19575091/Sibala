@@ -17,17 +17,20 @@ class SiBala
 
     public function result()
     {
-        $handDice1 = $this->groupByDice($this->dice1);
-        $handDice2 = $this->groupByDice($this->dice2);
+        $player1 = new Player($this->dice1, "player1");
+        $player2 = new Player($this->dice2, "player2");
 
-        $category1 = $this->getCategory($handDice1);
-        $category2 = $this->getCategory($handDice2);
+        $handDice1 = $player1->getHandDice();
+        $handDice2 = $player2->getHandDice();
+
+        $category1 = $handDice1->getCategory();
+        $category2 = $handDice2->getCategory();
 
         // normal category
         if ($category1->type === 1 && $category2->type === 1) {
-            if (array_key_last($handDice1) > array_key_last($handDice2)) {
+            if ($handDice1->getSingePoint() > $handDice2->getSingePoint()) {
                 return "Player1 win 100 with 3";
-            } elseif (array_key_last($handDice1) < array_key_last($handDice2)) {
+            } elseif ($handDice1->getSingePoint() < $handDice2->getSingePoint()) {
                 return "Player2 win 100 with 3";
             } else {
                 return "Tie";
@@ -44,26 +47,6 @@ class SiBala
             return "Player1 win 100 with 3";
         } else {
             return "Player2 win 100 with 3";
-        }
-    }
-
-    public function groupByDice($dice): array
-    {
-        sort($dice);
-        $groupByDices = array_count_values($dice);
-        arsort($groupByDices);
-
-        return $groupByDices;
-    }
-
-    private function getCategory(array $handDice)
-    {
-        if (count($handDice) === 1) {
-            return new ThreeOfAKind();
-        } elseif (count($handDice) === 2) {
-            return new NormalPoint();
-        } else {
-            return new NoPoint();
         }
     }
 }
