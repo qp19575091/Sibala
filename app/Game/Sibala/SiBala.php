@@ -29,6 +29,14 @@ class SiBala
         if (count($handDice1) === 1 && count($handDice2) === 1) {
             return "Tie";
         }
+
+        if (count($handDice1) === 3 && count($handDice2) === 3) {
+            return "Tie";
+        } elseif (count($handDice2) === 3) {
+            return "Player1 win 100 with 3";
+        } else {
+            return "Player2 win 100 with 3";
+        }
     }
 
     public function groupByDice($dice): array
