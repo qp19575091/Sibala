@@ -92,6 +92,12 @@ class SibalaTest extends TestCase
         );
     }
 
+    public function test_invalid_input_should_throw_exception()
+    {
+        $this->expectException(\Exception::class);
+        $this->game([1, 2, 3, 4], [1, 2, 3], 100);
+    }
+
     public function game($player1, $player2, $money): string
     {
         $game = new SiBala($player1, $player2, $money);
