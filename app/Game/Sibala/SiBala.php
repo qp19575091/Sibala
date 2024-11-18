@@ -20,7 +20,17 @@ class SiBala
         $player1 = new Player($this->dice1, "Player1");
         $player2 = new Player($this->dice2, "Player2");
 
-        return $this->compareResult($player1, $player2);
+        $handDice1 = $player1->getHandDice();
+        $handDice2 = $player2->getHandDice();
+
+        $compareResult = $this->compareResult($player1, $player2);
+        if ($compareResult === 0) {
+            return "Tie";
+        }
+
+        return $compareResult > 0
+            ? $player1->name . " win 100 with " . $handDice1->getSingePoint()
+            : $player2->name . " win 100 with " . $handDice2->getSingePoint();
     }
 
     private function compareResult(Player $player1, Player $player2)
@@ -32,31 +42,26 @@ class SiBala
         $category2 = $handDice2->getCategory();
 
         if ($category1->type === $category2->type && $category1->type === 1) {
-            return $this->compareNormalPoint($player1, $player2);
+            return $this->compareNormalPoint($handDice1, $handDice2);
         }
 
         if ($category1->type === $category2->type) {
-            return "Tie";
+            return 0;
         }
 
-        if ($category1->type > $category2->type) {
-            return $player1->name . " win 100 with " . $handDice1->getSingePoint();
-        } elseif ($category1->type < $category2->type) {
-            return $player2->name . " win 100 with " . $handDice2->getSingePoint();
-        }
+        return $category1->type > $category2->type
+            ? 1
+            : -1;
     }
 
-    private function compareNormalPoint(Player $player1, Player $player2)
+    private function compareNormalPoint(HandDice $handDice1, HandDice $handDice2)
     {
-        $handDice1 = $player1->getHandDice();
-        $handDice2 = $player2->getHandDice();
-
-        if ($handDice1->getSingePoint() > $handDice2->getSingePoint()) {
-            return $player1->name . " win 100 with " . $handDice1->getSingePoint();
-        } elseif ($handDice1->getSingePoint() < $handDice2->getSingePoint()) {
-            return $player2->name . " win 100 with " . $handDice2->getSingePoint();
-        } else {
-            return "Tie";
+        if ($handDice1->getSingePoint() === $handDice2->getSingePoint()) {
+            return 0;
         }
+        return $handDice1->getSingePoint() > $handDice2->getSingePoint()
+            ? 1
+            : -1;
+
     }
 }
