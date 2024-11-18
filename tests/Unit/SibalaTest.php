@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\Game\Game;
 use App\Game\Sibala\SiBala;
 use PHPUnit\Framework\TestCase;
 
@@ -95,12 +96,13 @@ class SibalaTest extends TestCase
     public function test_invalid_input_should_throw_exception()
     {
         $this->expectException(\Exception::class);
-        $this->game([1, 2, 3, 4], [1, 2, 3], 100);
+        $this->game([1, 2, 0], [1, 2, 3], 100);
     }
 
     public function game($player1, $player2, $money): string
     {
-        $game = new SiBala($player1, $player2, $money);
-        return $game->result();
+        $game = new Game();
+        $game = $game->sibala($player1, $player2, $money);
+        return $game->result();	        return $game->result();
     }
 }
