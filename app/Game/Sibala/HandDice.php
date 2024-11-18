@@ -5,6 +5,7 @@ namespace App\Game\Sibala;
 use App\Game\Sibala\Matcher\NormalPointMatcher;
 use App\Game\Sibala\Matcher\StrongStraightMatcher;
 use App\Game\Sibala\Matcher\OtherThreeOfAKindMatcher;
+use App\Game\Sibala\Matcher\ThreeOfAKindOfOneMatcher;
 use App\Game\Sibala\Matcher\WeakStraightMatcher;
 
 class HandDice
@@ -18,10 +19,11 @@ class HandDice
 
     public function getCategory()
     {
-        $matcher = new OtherThreeOfAKindMatcher(
-            new StrongStraightMatcher(
-                new NormalPointMatcher(
-                    new WeakStraightMatcher(null))));
+        $matcher = new ThreeOfAKindOfOneMatcher(
+            new OtherThreeOfAKindMatcher(
+                new StrongStraightMatcher(
+                    new NormalPointMatcher(
+                        new WeakStraightMatcher(null)))));
 
         return $matcher->decidedCategory($this);
     }
@@ -58,5 +60,10 @@ class HandDice
     public function isStrongStraight(): bool
     {
         return array_keys($this->groupByDice) === [4, 5, 6];
+    }
+
+    public function isThreeOfAKindOfOne(): int
+    {
+        return $this->isThreeOfAKind() & array_key_first($this->groupByDice) === 1;
     }
 }
