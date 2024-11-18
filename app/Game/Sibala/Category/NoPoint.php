@@ -2,7 +2,10 @@
 
 namespace App\Game\Sibala\Category;
 
-class NoPoint
+class NoPoint extends Category
 {
-    public int $type = 0;
+    public function type(): int
+    {
+        return 0;
+    }
 }

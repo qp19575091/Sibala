@@ -2,7 +2,11 @@
 
 namespace App\Game\Sibala\Category;
 
-class ThreeOfAKind
+class ThreeOfAKind extends Category
 {
-    public int $type = 3;
+    public int $multiplier = 3;
+    public function type(): int
+    {
+        return 3;
+    }
 }

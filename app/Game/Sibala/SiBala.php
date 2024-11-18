@@ -19,6 +19,9 @@ class SiBala
         $handDice1 = $player1->getHandDice();
         $handDice2 = $player2->getHandDice();
 
+        $category1 = $handDice1->getCategory();
+        $category2 = $handDice2->getCategory();
+
         $comparer = new Comparer($handDice1, $handDice2);
         $compareResult = $comparer->getResult();
 
@@ -27,7 +30,9 @@ class SiBala
         }
 
         return $compareResult > 0
-            ? $player1->name . " win 100 with " . $handDice1->getSingePoint()
-            : $player2->name . " win 100 with " . $handDice2->getSingePoint();
+            ? $player1->name . " win " . $this->bet * $category1->multiplier * $category2->payoutRate . " with " .
+            $handDice1->getSingePoint()
+            : $player2->name . " win " . $this->bet * $category2->multiplier * $category1->payoutRate . " with " .
+            $handDice2->getSingePoint();
     }
 }
