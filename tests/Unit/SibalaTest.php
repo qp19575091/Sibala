@@ -97,6 +97,7 @@ class SibalaTest extends TestCase
     {
         $this->expectException(\Exception::class);
         $this->game([1, 2, 0], [1, 2, 3], 100);
+        $this->game([1, 2, 7], [1, 2, 3], 100);
     }
 
     public function game($player1, $player2, $money): string
