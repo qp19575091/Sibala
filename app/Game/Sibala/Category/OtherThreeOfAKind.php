@@ -2,11 +2,13 @@
 
 namespace App\Game\Sibala\Category;
 
+use App\Enums\Sibala\CateGoryType;
+
 class OtherThreeOfAKind extends Category
 {
     public int $multiplier = 3;
-    public function type(): int
+    public function type(): CateGoryType
     {
-        return 3;
+        return CateGoryType::OtherThreeOfAKind;
     }
 }

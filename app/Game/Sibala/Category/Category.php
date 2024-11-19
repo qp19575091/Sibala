@@ -2,9 +2,11 @@
 
 namespace App\Game\Sibala\Category;
 
+use App\Enums\Sibala\CateGoryType;
+
 abstract class Category
 {
-    public int $type;
+    public CateGoryType $type;
     public int $multiplier = 1;
     public int $payoutRate = 1;
 
@@ -13,5 +15,5 @@ abstract class Category
         $this->type = $this->type();
     }
 
-    abstract public function type(): int;
+    abstract public function type(): CateGoryType;
 }

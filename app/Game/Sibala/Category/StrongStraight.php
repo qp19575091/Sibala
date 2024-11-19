@@ -2,12 +2,14 @@
 
 namespace App\Game\Sibala\Category;
 
+use App\Enums\Sibala\CateGoryType;
+
 class StrongStraight extends Category
 {
     public int $multiplier = 2;
 
-    public function type(): int
+    public function type(): CateGoryType
     {
-        return 2;
+        return CateGoryType::StrongStraight;
     }
 }

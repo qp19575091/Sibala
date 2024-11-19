@@ -2,10 +2,12 @@
 
 namespace App\Game\Sibala\Category;
 
+use App\Enums\Sibala\CateGoryType;
+
 class NoPoint extends Category
 {
-    public function type(): int
+    public function type(): CateGoryType
     {
-        return -1;
+        return CateGoryType::NoPoint;
     }
 }
