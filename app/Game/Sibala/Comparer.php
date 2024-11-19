@@ -26,12 +26,6 @@ class Comparer
 
     private function compareSinglePoint(): int
     {
-        if ($this->handDice1->getSingePoint() === $this->handDice2->getSingePoint()) {
-            return 0;
-        }
-
-        return $this->handDice1->getSingePoint() > $this->handDice2->getSingePoint()
-            ? 1
-            : -1;
+        return $this->handDice1->getSingePoint() - $this->handDice2->getSingePoint();
     }
 }
