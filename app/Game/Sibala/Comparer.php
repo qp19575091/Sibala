@@ -21,10 +21,6 @@ class Comparer
             return $this->compareSinglePoint();
         }
 
-        if ($compareResult === 0) {
-            return 0;
-        }
-
         return $compareResult;
     }
 
