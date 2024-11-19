@@ -18,14 +18,9 @@ class Comparer
         $compareResult = $category1->type->value - $category2->type->value;
 
         if ($compareResult === 0 && $this->handDice1->isNormalPoint()) {
-            return $this->compareSinglePoint();
+            return $this->handDice1->getSingePoint() - $this->handDice2->getSingePoint();
         }
 
         return $compareResult;
-    }
-
-    private function compareSinglePoint(): int
-    {
-        return $this->handDice1->getSingePoint() - $this->handDice2->getSingePoint();
     }
 }
