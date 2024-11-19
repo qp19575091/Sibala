@@ -15,17 +15,17 @@ class Comparer
         $category1 = $this->handDice1->getCategory();
         $category2 = $this->handDice2->getCategory();
 
-        if ($category1->type->value === $category2->type->value && $this->handDice1->isNormalPoint()) {
+        $compareResult = $category1->type->value - $category2->type->value;
+
+        if ($compareResult === 0 && $this->handDice1->isNormalPoint()) {
             return $this->compareSinglePoint();
         }
 
-        if ($category1->type->value === $category2->type->value) {
+        if ($compareResult === 0) {
             return 0;
         }
 
-        return $category1->type->value > $category2->type->value
-            ? 1
-            : -1;
+        return $compareResult;
     }
 
     private function compareSinglePoint(): int
