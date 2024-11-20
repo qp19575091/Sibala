@@ -13,7 +13,7 @@ class HandDice
 {
     private array $groupByDice;
 
-    public function __construct($dice)
+    public function __construct(array $dice)
     {
         $this->groupByDice = $this->groupByDice($dice);
     }
