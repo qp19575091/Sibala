@@ -24,16 +24,11 @@ class SiBala
         $player1 = new Player($this->dice1, "Player1");
         $player2 = new Player($this->dice2, "Player2");
 
-        $handDice1 = $player1->getHandDice();
-        $handDice2 = $player2->getHandDice();
-
-        $category1 = $handDice1->getCategory();
-        $category2 = $handDice2->getCategory();
+        $category1 = $player1->getHandDice()->getCategory();
+        $category2 = $player2->getHandDice()->getCategory();
 
         $comparer = new Comparer($player1, $player2);
-        $compareResult = $comparer->getResult();
-
-        if ($compareResult === 0) {
+        if ($comparer->getResult() === 0) {
             return "Tie";
         }
 
