@@ -19,9 +19,9 @@ abstract class CategoryMatcher
         if ($this->isMatch($handDice)) {
             return $this->getMatchCategory();
         }
-        return $this->nextMatcher !== null
-            ? $this->nextMatcher->decidedCategory($handDice)
-            : new NoPoint();
+        return is_null($this->nextMatcher)
+            ? new NoPoint()
+            : $this->nextMatcher->decidedCategory($handDice);
     }
 
     abstract public function isMatch(HandDice $handDice): bool;
