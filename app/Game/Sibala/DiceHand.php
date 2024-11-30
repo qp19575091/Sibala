@@ -9,7 +9,7 @@ use App\Game\Sibala\Matcher\OtherThreeOfAKindMatcher;
 use App\Game\Sibala\Matcher\ThreeOfAKindOfOneMatcher;
 use App\Game\Sibala\Matcher\WeakStraightMatcher;
 
-class HandDice
+class DiceHand
 {
     private array $groupByDice;
 

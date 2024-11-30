@@ -4,13 +4,13 @@ namespace App\Game\Sibala\Matcher;
 
 use App\Game\Sibala\Category\Category;
 use App\Game\Sibala\Category\OtherThreeOfAKind;
-use App\Game\Sibala\HandDice;
+use App\Game\Sibala\DiceHand;
 
 class OtherThreeOfAKindMatcher extends CategoryMatcher
 {
-    public function isMatch(HandDice $handDice): bool
+    public function isMatch(DiceHand $diceHand): bool
     {
-        return  $handDice->isThreeOfAKind();
+        return  $diceHand->isThreeOfAKind();
     }
 
     public function getMatchCategory(): Category

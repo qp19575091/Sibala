@@ -10,8 +10,8 @@ class Player
     ) {
     }
 
-    public function getHandDice(): HandDice
+    public function getDiceHand(): DiceHand
     {
-        return new HandDice($this->dice);
+        return new DiceHand($this->dice);
     }
 }
