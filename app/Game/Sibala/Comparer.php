@@ -12,15 +12,13 @@ class Comparer
 
     public function getResult(): int
     {
-        $category1 = $this->diceHand1->getCategory();
-        $category2 = $this->diceHand2->getCategory();
-
-        $compareResult = $category1->rank->value - $category2->rank->value;
-
-        if ($compareResult === 0 && $this->diceHand1->isNormalPoint()) {
+        if ($this->diceHand1->isNormalPoint() && $this->diceHand2->isNormalPoint()) {
             return $this->diceHand1->getSingePoint() - $this->diceHand2->getSingePoint();
         }
 
-        return $compareResult;
+        $category1 = $this->diceHand1->getCategory();
+        $category2 = $this->diceHand2->getCategory();
+
+        return $category1->rank->value - $category2->rank->value;
     }
 }

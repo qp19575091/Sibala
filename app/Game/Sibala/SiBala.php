@@ -27,15 +27,15 @@ class SiBala
         $diceHand1 = $player1->getDiceHand();
         $diceHand2 = $player2->getDiceHand();
 
-        $category1 = $diceHand1->getCategory();
-        $category2 = $diceHand2->getCategory();
-
         $comparer = new Comparer($diceHand1, $diceHand2);
         $compareResult = $comparer->getResult();
 
         if ($compareResult === 0) {
             return "Tie";
         }
+
+        $category1 = $diceHand1->getCategory();
+        $category2 = $diceHand2->getCategory();
 
         return $compareResult > 0
             ? $player1->name . " win " . $this->bet * $category1->multiplier * $category2->payoutRate . " with " .
