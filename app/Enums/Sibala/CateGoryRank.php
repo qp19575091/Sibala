@@ -2,7 +2,7 @@
 
 namespace App\Enums\Sibala;
 
-enum CateGoryType: int
+enum CateGoryRank: int
 {
     case ThreeOfAKindOfOne = 5;
     case StrongStraight = 2;

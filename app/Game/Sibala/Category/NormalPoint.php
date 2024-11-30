@@ -2,12 +2,12 @@
 
 namespace App\Game\Sibala\Category;
 
-use App\Enums\Sibala\CateGoryType;
+use App\Enums\Sibala\CateGoryRank;
 
 class NormalPoint extends Category
 {
-    public function type(): CateGoryType
+    public function rank(): CateGoryRank
     {
-        return CateGoryType::NormalPoint;
+        return CateGoryRank::NormalPoint;
     }
 }

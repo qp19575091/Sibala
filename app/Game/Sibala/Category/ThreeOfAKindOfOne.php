@@ -2,14 +2,14 @@
 
 namespace App\Game\Sibala\Category;
 
-use App\Enums\Sibala\CateGoryType;
+use App\Enums\Sibala\CateGoryRank;
 
 class ThreeOfAKindOfOne extends Category
 {
     public int $multiplier = 5;
 
-    public function type(): CateGoryType
+    public function rank(): CateGoryRank
     {
-        return CateGoryType::ThreeOfAKindOfOne;
+        return CateGoryRank::ThreeOfAKindOfOne;
     }
 }

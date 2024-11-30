@@ -2,14 +2,14 @@
 
 namespace App\Game\Sibala\Category;
 
-use App\Enums\Sibala\CateGoryType;
+use App\Enums\Sibala\CateGoryRank;
 
 class WeakStraight extends Category
 {
     public int $payoutRate = 2;
 
-    public function type(): CateGoryType
+    public function rank(): CateGoryRank
     {
-        return CateGoryType::WeakStraight;
+        return CateGoryRank::WeakStraight;
     }
 }

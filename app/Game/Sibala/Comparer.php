@@ -15,7 +15,7 @@ class Comparer
         $category1 = $this->handDice1->getCategory();
         $category2 = $this->handDice2->getCategory();
 
-        $compareResult = $category1->type->value - $category2->type->value;
+        $compareResult = $category1->rank->value - $category2->rank->value;
 
         if ($compareResult === 0 && $this->handDice1->isNormalPoint()) {
             return $this->handDice1->getSingePoint() - $this->handDice2->getSingePoint();

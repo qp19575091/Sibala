@@ -2,18 +2,18 @@
 
 namespace App\Game\Sibala\Category;
 
-use App\Enums\Sibala\CateGoryType;
+use App\Enums\Sibala\CateGoryRank;
 
 abstract class Category
 {
-    public CateGoryType $type;
+    public CateGoryRank $rank;
     public int $multiplier = 1;
     public int $payoutRate = 1;
 
     public function __construct()
     {
-        $this->type = $this->type();
+        $this->rank = $this->rank();
     }
 
-    abstract public function type(): CateGoryType;
+    abstract public function rank(): CateGoryRank;
 }
