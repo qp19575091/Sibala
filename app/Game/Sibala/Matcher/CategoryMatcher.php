@@ -2,7 +2,6 @@
 
 namespace App\Game\Sibala\Matcher;
 
-
 use App\Game\Sibala\Category\Category;
 use App\Game\Sibala\Category\NoPoint;
 use App\Game\Sibala\DiceHand;

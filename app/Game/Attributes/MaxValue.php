@@ -8,8 +8,7 @@ use Attribute;
 class MaxValue extends ValidationRule
 {
     public function __construct(
-        public readonly float $limit,
-        public readonly bool $strict = false
+        public readonly float $limit
     ) {
     }
 
@@ -18,9 +17,7 @@ class MaxValue extends ValidationRule
         if (!is_array($value)) {
             $value = [$value];
         }
-        return $this->strict
-            ? max($value) < $this->limit
-            : max($value) <= $this->limit;
+        return max($value) <= $this->limit;
     }
 
     protected function message(): string

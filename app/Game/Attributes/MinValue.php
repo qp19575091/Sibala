@@ -9,8 +9,7 @@ use Attribute;
 class MinValue extends ValidationRule
 {
     public function __construct(
-        public readonly float $limit,
-        public readonly bool $strict = false
+        public readonly float $limit
     ) {
     }
 
@@ -19,9 +18,7 @@ class MinValue extends ValidationRule
         if (!is_array($value)) {
             $value = [$value];
         }
-        return $this->strict
-            ? min($value) > $this->limit
-            : min($value) >= $this->limit;
+        return min($value) >= $this->limit;
     }
 
     protected function message(): string
